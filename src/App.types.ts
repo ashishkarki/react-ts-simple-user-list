@@ -6,6 +6,11 @@ export interface IUser {
   profession: string
 }
 
+export interface IListUsers {
+  allUsers: Array<IUser>
+  deleteHandler: (id: number) => void // React.MouseEventHandler<HTMLButtonElement>
+}
+
 export interface IUsers {
   currentUser: IUser
   allUsers: Array<IUser>

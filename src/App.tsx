@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import './App.css'
 import { IUsers } from './App.types'
+import ListUsers from './components/ListUsers/ListUsers'
 import NewUser from './components/NewUser/NewUser'
+import RandomUser from './components/RandomUser/RandomUser'
 
 const App: React.FC = () => {
   const [userComposite, setUserComposite] = useState<IUsers>({
@@ -40,7 +42,18 @@ const App: React.FC = () => {
     })
   }
 
-  console.log(`state: ${JSON.stringify(userComposite)}`)
+  const deleteHandler = (indexToDelete: number) => {
+    const filteredUsers = userComposite.allUsers.filter(
+      (user, idx) => idx !== indexToDelete
+    )
+
+    setUserComposite({
+      ...userComposite,
+      allUsers: filteredUsers,
+    })
+  }
+
+  // console.log(`state: ${JSON.stringify(userComposite)}`)
 
   return (
     <div className='container'>
@@ -50,6 +63,13 @@ const App: React.FC = () => {
         userComposite={userComposite}
         onSubmitHandler={onSubmitHandler}
         onChangeHandler={onChangeHandler}
+      />
+
+      <RandomUser />
+
+      <ListUsers
+        allUsers={userComposite.allUsers}
+        deleteHandler={deleteHandler}
       />
     </div>
   )
