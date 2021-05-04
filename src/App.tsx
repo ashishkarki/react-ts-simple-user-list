@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
+import { IUsers } from './App.types'
+import NewUser from './components/NewUser/NewUser'
 
-function App() {
+const App: React.FC = () => {
+  const [userComposite, setUserComposite] = useState<IUsers>({
+    currentUser: {
+      username: '',
+      age: 0,
+      profession: '',
+    },
+    allUsers: [],
+  })
+
+  const onChangeHandler = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const { name, value } = event.target
+
+    setUserComposite({
+      ...userComposite,
+      currentUser: {
+        ...userComposite.currentUser,
+        [name]: value,
+      },
+    })
+  }
+
+  const onSubmitHandler = (event: React.SyntheticEvent): void => {
+    event.preventDefault()
+
+    setUserComposite({
+      currentUser: {
+        username: '',
+        age: 0,
+        profession: '',
+      },
+      allUsers: [...userComposite.allUsers, userComposite.currentUser],
+    })
+  }
+
+  console.log(`state: ${JSON.stringify(userComposite)}`)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <h1>React Typescript Simple UserList Project</h1>
+
+      <NewUser
+        userComposite={userComposite}
+        onSubmitHandler={onSubmitHandler}
+        onChangeHandler={onChangeHandler}
+      />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
