@@ -9,12 +9,20 @@
 }
 
 .user {
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: space-around;
-  justify-items: center;
+  justify-items: center; */
 
-  border: 1px solid saddlebrown;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* gap: 0.2rem 1rem; */
+  /* border: 1px solid saddlebrown; */
   padding: 0.1rem;
   margin: 0.2rem;
+}
+
+.btn {
+  height: 30%;
+  margin-top: 15%;
 }

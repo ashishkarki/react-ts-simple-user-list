@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
-import { IUsers } from './App.types'
+import { IUser, IUsers } from './App.types'
 import ListUsers from './components/ListUsers/ListUsers'
 import NewUser from './components/NewUser/NewUser'
 import RandomUser from './components/RandomUser/RandomUser'
@@ -42,6 +42,17 @@ const App: React.FC = () => {
     })
   }
 
+  const addRandomUser = (randomUser: IUser) => {
+    setUserComposite({
+      currentUser: {
+        username: '',
+        age: 0,
+        profession: '',
+      },
+      allUsers: [...userComposite.allUsers, randomUser],
+    })
+  }
+
   const deleteHandler = (indexToDelete: number) => {
     const filteredUsers = userComposite.allUsers.filter(
       (user, idx) => idx !== indexToDelete
@@ -65,7 +76,7 @@ const App: React.FC = () => {
         onChangeHandler={onChangeHandler}
       />
 
-      <RandomUser />
+      <RandomUser addRandomUser={addRandomUser} />
 
       <ListUsers
         allUsers={userComposite.allUsers}
