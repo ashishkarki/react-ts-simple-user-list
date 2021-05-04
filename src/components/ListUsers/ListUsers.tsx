@@ -15,6 +15,8 @@ const ListUsers: React.FC<IListUsers> = ({ allUsers, deleteHandler }) => {
           <h4>Delete?</h4>
         </div>
 
+        <hr />
+
         {allUsers &&
           allUsers.map((user, idx) => (
             <div key={idx} className={listUsersStyles.user}>

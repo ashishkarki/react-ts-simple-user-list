@@ -20,9 +20,9 @@ const RandomUser: React.FC<IRandomUser> = ({ addRandomUser }) => {
   return (
     <div
       style={{
-        border: '2px dashed cyan',
-        margin: '10%',
-        padding: '0.5rem',
+        border: '2px groove blueviolet',
+        margin: '1rem 20vw',
+        padding: '0.2rem',
 
         display: 'grid',
         gridTemplateColumns: 'auto auto',

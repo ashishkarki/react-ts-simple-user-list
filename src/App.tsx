@@ -67,7 +67,7 @@ const App: React.FC = () => {
   // console.log(`state: ${JSON.stringify(userComposite)}`)
 
   return (
-    <div className='container'>
+    <div className='App'>
       <h1>React Typescript Simple UserList Project</h1>
 
       <NewUser

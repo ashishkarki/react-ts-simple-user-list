@@ -26,6 +26,7 @@ const NewUser: React.FC<INewUser> = ({
       <div className={newUserStyles.inputgroup}>
         <label htmlFor='username'>Name:</label>
         <input
+          required
           type='text'
           name='username'
           id='username'
@@ -37,6 +38,8 @@ const NewUser: React.FC<INewUser> = ({
       <div className={newUserStyles.inputgroup}>
         <label htmlFor='age'>Age:</label>
         <input
+          required
+          defaultValue={0}
           type='number'
           id='age'
           name='age'
@@ -48,6 +51,7 @@ const NewUser: React.FC<INewUser> = ({
       <div className={newUserStyles.inputgroup}>
         <label htmlFor='profession'>Profession:</label>
         <input
+          required
           type='text'
           name='profession'
           id='profession'
